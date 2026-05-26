@@ -111,10 +111,14 @@ not touched. If that happens, ask before committing.
 If the user wants the change live on a Coder deployment:
 
 ```sh
-coder templates push "$TEMPLATE_NAME" -d "$TEMPLATE_DIR"
+coder templates push "$TEMPLATE_NAME" -d "$TEMPLATE_DIR" --yes
+coder templates versions list "$TEMPLATE_NAME"
 ```
 
-Confirm the new version with `coder templates list`.
+The `versions list` output confirms the new version is registered.
+If the user wants the new version to become active automatically,
+add `--activate` to `push`; otherwise leave the existing active
+version alone.
 
 ## Common Modules
 
