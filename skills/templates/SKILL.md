@@ -202,14 +202,14 @@ should not need to know the host's CPU architecture or the name of
 a storage pool.
 
 ```terraform
-# Good — arch is an admin concern, not a user choice
+# Good: arch is an admin concern, not a user choice
 variable "arch" {
   description = "CPU architecture of the VM host (amd64 or arm64). Set at template push time."
   type        = string
   default     = "amd64"
 }
 
-# Good — image is a user choice made per workspace
+# Good: image is a user choice made per workspace
 data "coder_parameter" "image" {
   name    = "image"
   type    = "string"
@@ -237,12 +237,12 @@ and breaks Coder Desktop file sync. The agent always starts in
 `$HOME` by default.
 
 ```terraform
-# Wrong — deprecated, causes warnings
+# Wrong: deprecated, causes warnings
 resource "coder_agent" "main" {
   dir = "/home/${local.username}"
 }
 
-# Correct — omit dir entirely
+# Correct: omit dir entirely
 resource "coder_agent" "main" {
   arch = var.arch
   os   = "linux"
@@ -264,8 +264,8 @@ Additional points specific to templates (not covered in AGENTS.md):
   `main.tf` and `README.md`. No `.tftest.hcl` is required (only
   modules need tests).
 - PR title convention: `feat(<namespace>/templates/<name>): <short
-  description>` — e.g. `feat(bpmct/templates/incus-vm): add Incus VM
-  template`.
+  description>` (e.g. `feat(bpmct/templates/incus-vm): add Incus VM
+  template`).
 - **Sync your fork's `main` with upstream before branching.**
   If you don't, the PR diff will show all pre-existing files in your
   namespace as new additions rather than just your changes:
