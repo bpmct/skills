@@ -269,10 +269,12 @@ Additional points specific to templates (not covered in AGENTS.md):
 - **Sync your fork's `main` with upstream before branching.**
   If you don't, the PR diff will show all pre-existing files in your
   namespace as new additions rather than just your changes:
+
   ```sh
   gh api -X POST /repos/<your-username>/registry/merge-upstream \
     -f branch=main
   ```
+
 - Run `bun fmt` (which runs `terraform fmt` + Prettier) and confirm
   it produces no diff before pushing.
 
